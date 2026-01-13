@@ -2,7 +2,9 @@
 
 [中文说明 (Chinese Version)](README.md)
 
-**SMRr** is a high-performance R package designed for integrating GWAS and eQTL summary statistics to identify genes whose expression is pleiotropically associated with complex traits. It provides a precise implementation of the SMR (Wald test) and HEIDI (Heterogeneity in Dependent Instruments) tests, matching the gold-standard C++ SMR v1.4.0 and Python smrpy.
+**SMRr** is a high-performance R package designed for integrating GWAS and eQTL summary statistics to identify genes whose expression is pleiotropically associated with complex traits.
+
+This package is an R implementation of the original **SMR** software developed by Prof. Jian Yang's group. The algorithm has been strictly validated to match the precision of the original C++ SMR program ([SMR Official Website](https://yanglab.westlake.edu.cn/software/smr/#Overview)).
 
 ## Key Features
 - **Precise HEIDI Test**: Uses the exact covariance formula and Satterthwaite approximation (`pchisqsum`) for p-values.
