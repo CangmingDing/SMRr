@@ -1,0 +1,70 @@
+name: R Build & Release Binary
+
+on:
+  push:
+    branches: [ main, master ]
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ${{ matrix.config.os }}
+    name: ${{ matrix.config.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - {os: macOS-latest,   r: 'release'}
+          - {os: windows-latest, r: 'release'}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: ${{ matrix.config.r }}
+
+      - name: Install dependencies
+        run: |
+          install.packages(c("remotes", "digest", "data.table", "ggplot2", "dplyr", "scales", "cowplot", "parallel", "pbapply", "ggrepel", "patchwork", "genio"))
+        shell: Rscript {0}
+
+      - name: Build Binary (Windows)
+        if: runner.os == 'Windows'
+        run: |
+          R CMD INSTALL --build .
+        shell: bash
+
+      - name: Build Binary (macOS)
+        if: runner.os == 'macOS'
+        run: |
+          R CMD INSTALL --build .
+        shell: bash
+
+      - name: Upload Binaries as Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: SMRr-binaries-${{ runner.os }}
+          path: |
+            *.zip
+            *.tgz
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          path: artifacts
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            artifacts/SMRr-binaries-Windows/*.zip
+            artifacts/SMRr-binaries-macOS/*.tgz
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

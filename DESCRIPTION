@@ -1,0 +1,25 @@
+Package: SMRr
+Type: Package
+Title: Summary-data-based Mendelian Randomization Analysis
+Version: 0.1.0
+Author: Cangming
+Maintainer: Cangming <202201230726@163.com>
+Description: Implements the SMR (Summary-data-based Mendelian Randomization) and HEIDI tests to test for pleiotropic association between gene expression and complex traits using GWAS and eQTL summary statistics.
+License: GPL-2
+Encoding: UTF-8
+LazyData: true
+Imports:
+    data.table,
+    ggplot2,
+    dplyr,
+    stats,
+    utils,
+    genio,
+    scales,
+    cowplot,
+    parallel,
+    pbapply,
+    ggrepel,
+    patchwork,
+    digest
+RoxygenNote: 7.2.3
