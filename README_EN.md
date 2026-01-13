@@ -74,4 +74,4 @@ plot_manhattan(results)
 
 ## Authors
 - **Cangming** (Main Developer)
-- Email: 202201230726@163.com
+- Email: 202201230726@bucm.edu.cn
