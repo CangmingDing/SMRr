@@ -1,10 +1,10 @@
-# SMRr: 基于 R 的中孟德尔随机化分析包
+# SMRr: 完全基于 R 的SMR分析工具
 
 [English Version](README_EN.md)
 
-**SMRr** 是一款高性能 R 语言软件包，专门用于整合 GWAS 和 eQTL 总结数据，通过 SMR (Wald test) 和 HEIDI (Heterogeneity in Dependent Instruments) 检验，识别与复杂性状具有多效性关联的基因。
+**SMRr** 是一款完全基于 R 开发的包，可以实现SMR分析，专门用于整合 GWAS 和 eQTL 总结数据，通过 SMR (Wald test) 和 HEIDI (Heterogeneity in Dependent Instruments) 检验，识别与复杂性状具有多效性关联的基因。
 
-本项目算法经过严格校对，完全匹配 C++ SMR v1.4.0 原版程序及 Python smrpy 的计算精度。
+本项目是对杨剑教授团队开发的原始 **SMR** 软件的 R 语言高性能实现。保留了基础SMR分析能力，算法经过严格校对，完全匹配 C++ SMR 原版程序（[SMR Official Website](https://yanglab.westlake.edu.cn/software/smr/#Overview)）
 
 ## 核心功能
 - **精确的 HEIDI 检验**：采用完整的协方差公式。使用 Satterthwaite 近似法计算 p 值，结果远比简化版 R 脚本精确。
