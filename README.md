@@ -75,5 +75,5 @@ plot_manhattan(results)
 
 ## 作者信息
 - **Cangming**
-- 邮箱: 202201230726@163.com
+- 邮箱: 202201230726@bucm.edu.cn
 - 微信: CangMing-03
